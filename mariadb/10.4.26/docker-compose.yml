@@ -1,0 +1,29 @@
+services:
+  mariadb_dq:
+    image: mariadb:10.4.26
+    container_name: mariadb_freshbread
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: mariadbrootpass
+      MARIADB_DATABASE: freshbread
+      MARIADB_USER: freshbread
+      MARIADB_PASSWORD: mariadbpass
+    volumes:
+      - mariadb_data_volume:/var/lib/mysql
+    command:
+      --lower-case-table-names=1
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    restart: always
+
+    # === 로그 로테이션 설정 추가 ===
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
+
+volumes:
+  mariadb_data_volume:
+    driver: local
