@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlrootpass
+      MYSQL_DATABASE: freshbread
+      MYSQL_USER: freshbread
+      MYSQL_PASSWORD: mysqlpass
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql

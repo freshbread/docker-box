@@ -1,0 +1,19 @@
+version: '3'
+services:
+  redmine:
+    image: redmine:latest
+    container_name: redmine
+    ports:
+      - "3000:3000"
+    volumes:
+#      - ./data:/usr/src/redmine/files
+      - ./database.yml:/usr/src/redmine/config/database.yml
+    networks:
+      - redmine_network
+
+volumes:
+  redmine_data:
+
+networks:
+  diquest_28_network:
+    external: true

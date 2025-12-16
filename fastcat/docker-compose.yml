@@ -1,0 +1,27 @@
+version: '2.1'
+services:
+  search:
+    image: fastcatsearch
+    ports:
+        - '8898:8090'
+    volumes:
+        - '/home/rose/fastcat/search:/usr/local/fastcatsearch3'
+    network_mode: "bridge"
+    container_name: fastcatsearch
+  console:
+    image: fastcatsearch-console
+    ports:
+        - '8888:8080'
+    volumes:
+        - '/home/rose/fastcat/console:/usr/local/fastcatsearch-console'
+    network_mode: "bridge"
+    container_name: fastcatsearch-console
+  analytics:
+    image: fastcat-analytics
+    ports:
+        - '8881:8081'
+        - '8858:8050'
+    volumes:
+        - '/home/rose/fastcat/analytics:/usr/local/fastcat-analytics'
+    network_mode: "bridge"
+    container_name: fastcat-analytics

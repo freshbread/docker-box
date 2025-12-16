@@ -1,0 +1,8 @@
+version: '3'
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    restart: always
+    container_name: gitlab-runner
+    volumes:
+      - '/srv/gitlab-runner/config:/home/rose/docker-compose/gitlab-runner/volumes'

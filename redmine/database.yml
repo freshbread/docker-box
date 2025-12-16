@@ -1,0 +1,7 @@
+production:
+  adapter: "mysql2"
+  host: "172.24.0.2"
+  database: "redmine"
+  username: "root"
+  password: "@Ek2znptm2"
+  encoding: "utf8"

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mysql:
+    platform: linux/x86_64
+    image: mysql:8.2.0
+    container_name: mysql
+    restart: always
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlpass
+      MYSQL_DATABASE: freshbread
+      MYSQL_USER: freshbread
+      MYSQL_PASSWORD: mysqlpass
+      TZ: Asia/Seoul
+# 처음 시작할땐 volumes 주석하고 처리한 후 container에 있는 파일들을 data 폴더에 cp하고 주석 해제하여 사용할 것
+#    volumes:
+#      - ./data/db:/var/lib/mysql
+#      - ./data/config:/etc/mysql
+#      - ./data/mysql-files:/var/lib/mysql-files
+    networks:
+      - freshbread_network
+
+volumes:
+  mysql_data:
+
+networks:
+  jhjeon_network:
+    external: true

@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    network_mode: "bridge"
+    environment:
+      MYSQL_ROOT_PASSWORD: jun24677
+      MYSQL_DATABASE: jhjeon
+      MYSQL_USER: jhjeon
+      MYSQL_PASSWORD: jun24677
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  volumes:
+      - './data:/etc/mysql'
+
+  adminer:
+    container_name: db-adminer
+    image: adminer
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - 38080:8080
